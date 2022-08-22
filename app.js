@@ -18,7 +18,7 @@ app.post('/imc', (req, res) => {
     const nome = req.body.nome;
     const peso = req.body.peso;
     const altura = req.body.altura;
-    const result = peso / (altura * altura).toFixed(1);
+    const result = peso / (altura * altura);
 
     let classificacao = '';
 
@@ -33,7 +33,7 @@ app.post('/imc', (req, res) => {
     }else if(result < 40){
         classificacao = 'com o peso ideal';
     }
-    res.send(`Olá ${nome} seu IMC é ${result} e você esta ${classificacao}`);
+    res.send(`Olá ${nome} seu IMC é ${result.toFixed(2)} e você esta ${classificacao}`);
 })
 
 app.listen(port, (error) => {
